@@ -49,7 +49,7 @@
       },
       "knowsLanguage": ["English", "Yoruba", "French"],
       "sameAs": [
-        "https://www.upwork.com/freelancers/~01ca2a56e095a8a231"
+        "https://www.upwork.com/freelancers/~01ca2a56e095a8a231?mp_source=share"
       ]
     },
     {
@@ -272,31 +272,23 @@
     padding:18px; position:relative;
   }
   .frame .label{font-size:0.78rem; color:var(--ink-soft); margin-bottom:10px; display:flex; justify-content:space-between;}
-  .swatch{
-    aspect-ratio:4/5; background:
-      repeating-linear-gradient(135deg, #E7DFC8, #E7DFC8 10px, #DED4B8 10px, #DED4B8 20px);
-    display:flex; align-items:center; justify-content:center;
-    color:var(--ink-soft); font-size:0.85rem; border:1px dashed var(--line);
+  .swatch-img{
+    width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--line);
+  }
+  .swatch-video{
+    width:100%; aspect-ratio:9/16; object-fit:cover; background:#000; display:block;
   }
   .frame.video{
-    margin-left:56px; margin-top:-58px; background:var(--emerald-deep); border-color:var(--emerald-deep);
+    margin-left:56px; margin-top:-40px; background:var(--emerald-deep); border-color:var(--emerald-deep);
+    position:relative; z-index:1;
   }
   .frame.video .label{color:rgba(246,241,228,0.7);}
-  .frame.video .swatch{
-    background:linear-gradient(160deg, #123F30, #0C3B2E 60%, #0A2F24);
-    border:1px dashed rgba(246,241,228,0.3); color:rgba(246,241,228,0.85);
-    position:relative;
-  }
-  .play{
-    width:46px; height:46px; border-radius:50%; border:1.5px solid rgba(246,241,228,0.8);
-    display:flex; align-items:center; justify-content:center; margin-bottom:10px;
-  }
-  .play::after{content:''; border-left:14px solid rgba(246,241,228,0.9); border-top:8px solid transparent; border-bottom:8px solid transparent; margin-left:3px;}
   .flow-arrow{
     position:absolute; left:calc(56% - 4px); top:44%; transform:translate(-50%,-50%) rotate(90deg);
     font-size:1.6rem; color:var(--brass); z-index:2;
   }
   .flow-caption{font-size:0.85rem; color:var(--ink-soft); margin-top:18px;}
+  .flow-caption a{color:var(--emerald-deep); text-decoration:underline; text-underline-offset:3px;}
 
   @media (max-width: 860px){
     .hero .wrap{grid-template-columns:1fr;}
@@ -343,12 +335,13 @@
     display:flex; flex-direction:column;
   }
   .work-thumb{
-    aspect-ratio:9/12; position:relative;
-    background:linear-gradient(155deg,#164A38,#0C3B2E 70%);
+    aspect-ratio:9/16; position:relative; overflow:hidden;
+    background:#0C3B2E;
     clip-path:polygon(0 0, 100% 0, 100% 100%, 22px 100%, 0 calc(100% - 22px));
-    display:flex; align-items:flex-end; padding:18px; color:var(--cream);
   }
-  .work-thumb .play{border-color:rgba(246,241,228,0.7);}
+  .work-thumb video{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+  }
   .work-body{padding:22px;}
   .work-body h3{font-size:1.02rem; margin-bottom:8px;}
   .work-body p{font-size:0.92rem; margin-bottom:0;}
@@ -378,11 +371,11 @@
   details p{margin-top:14px; margin-bottom:0; font-size:0.97rem;}
 
   /* Contact */
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .contact-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;}
   .contact-card{border:1px solid var(--line-on-dark); padding:28px; background:rgba(246,241,228,0.04);}
   .contact-card h3{font-size:1.05rem; margin-bottom:8px;}
   .contact-card a.value{font-size:1.05rem; text-decoration:underline; text-underline-offset:4px;}
-  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+  @media (max-width:960px){.contact-grid{grid-template-columns:1fr;}}
 
   footer{padding:44px 24px; border-top:1px solid var(--line);}
   .footer-inner{
@@ -447,17 +440,19 @@
           <a class="btn ghost" href="#work">See the work</a>
         </div>
       </div>
-      <div class="flow" aria-hidden="true">
+      <div class="flow">
         <div class="frame photo">
           <div class="label"><span>Input</span><span>Product photo</span></div>
-          <div class="swatch">Your product image</div>
+          <img class="swatch-img" src="media/hero_product.jpg" alt="Fresh Grow body cream product packaging, the kind of photo a project starts from">
         </div>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
         <div class="frame video">
           <div class="label"><span>Output</span><span>9:16 · ready to publish</span></div>
-          <div class="swatch"><div><div class="play"></div>AI UGC ad</div></div>
+          <video class="swatch-video" controls playsinline preload="metadata" poster="media/website_poster.jpg">
+            <source src="media/website.mp4" type="video/mp4">
+          </video>
         </div>
-        <p class="flow-caption">One pipeline: photo in, publish-ready video ad out.</p>
+        <p class="flow-caption">One pipeline: photo in, publish-ready video ad out. <a href="https://www.upwork.com/freelancers/~01ca2a56e095a8a231?mp_source=share" target="_blank" rel="noopener">See more samples on Upwork</a></p>
       </div>
     </div>
   </section>
@@ -539,28 +534,40 @@
       </div>
       <div class="grid-portfolio">
         <article class="work-card">
-          <div class="work-thumb"><div class="play"></div></div>
+          <div class="work-thumb">
+            <video controls playsinline preload="metadata" poster="media/lip_gloss_poster.jpg">
+              <source src="media/lip_gloss.mp4" type="video/mp4">
+            </video>
+          </div>
           <div class="work-body">
             <h3>LUMÉA Lip Gloss</h3>
             <p>A cinematic-leaning beauty ad pairing a UGC-style hook with a more polished product close-up, built for paid feed placement.</p>
           </div>
         </article>
         <article class="work-card">
-          <div class="work-thumb"><div class="play"></div></div>
+          <div class="work-thumb">
+            <video controls playsinline preload="metadata" poster="media/bag_poster.jpg">
+              <source src="media/bag.mp4" type="video/mp4">
+            </video>
+          </div>
           <div class="work-body">
             <h3>Handbag talking-head ad</h3>
             <p>An AI talking-head product video for a handbag brand, styled as a natural, review-toned recommendation rather than a studio ad.</p>
           </div>
         </article>
         <article class="work-card">
-          <div class="work-thumb"><div class="play"></div></div>
+          <div class="work-thumb">
+            <video controls playsinline preload="metadata" poster="media/pizza_poster.jpg">
+              <source src="media/pizza.mp4" type="video/mp4">
+            </video>
+          </div>
           <div class="work-body">
-            <h3>Emmanuel Visual Studio</h3>
-            <p>An AI UGC talking-head ad produced for Emmanuel Visual Studio, focused on a clear, confident hook in the opening seconds.</p>
+            <h3>Pizza brand ad</h3>
+            <p>A fast-paced, sound-off-friendly product ad built for maximum retention in the first few seconds of a feed scroll.</p>
           </div>
         </article>
       </div>
-      <p class="stack-note">More drafts and published work are on <a href="https://www.upwork.com/freelancers/~01ca2a56e095a8a231" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:4px;">Upwork</a>.</p>
+      <p class="stack-note">See more drafts and published work on <a href="https://www.upwork.com/freelancers/~01ca2a56e095a8a231?mp_source=share" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:4px;">Upwork</a>.</p>
     </div>
   </section>
 
@@ -658,6 +665,11 @@
           <a class="value" id="email-link" href="mailto:debbyemmanuel495@gmail.com">debbyemmanuel495@gmail.com</a>
           <p style="margin-top:10px;">Better for longer briefs, brand guidelines, or attaching product photos.</p>
         </div>
+        <div class="contact-card">
+          <h3>Upwork</h3>
+          <a class="value" href="https://www.upwork.com/freelancers/~01ca2a56e095a8a231?mp_source=share" target="_blank" rel="noopener">View profile &amp; message</a>
+          <p style="margin-top:10px;">Prefer to hire and pay through Upwork? Contract, messaging, and payment protection all happen there.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -667,7 +679,7 @@
 <footer>
   <div class="footer-inner">
     <span>Deborah E. — AI UGC Ads &amp; Avatar Video Commercials, Lagos, Nigeria</span>
-    <span>&copy; <span id="year"></span> Deborah E. · <a href="https://www.upwork.com/freelancers/~01ca2a56e095a8a231" target="_blank" rel="noopener" style="text-decoration:underline;">Upwork profile</a></span>
+    <span>&copy; <span id="year"></span> Deborah E. · <a href="https://www.upwork.com/freelancers/~01ca2a56e095a8a231?mp_source=share" target="_blank" rel="noopener" style="text-decoration:underline;">Upwork profile</a></span>
   </div>
 </footer>
 
