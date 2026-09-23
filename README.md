@@ -4,8 +4,12 @@ A single-page portfolio site for an AI UGC ad / avatar commercial studio, built 
 
 ## Files
 
+All files sit flat in one folder — no subfolders needed:
+
 - `index.html` — the entire site (structure, styles, and script in one file)
-- `media/` — the four sample video ads and their poster images, plus the hero product photo
+- `deborah_photo.jpg` — your photo, shown in the hero
+- `website.mp4`, `lip_gloss.mp4`, `bag.mp4`, `pizza.mp4` — the four sample ads
+- `website_frame.jpg`, `lip_gloss_frame.jpg`, `bag_frame.jpg`, `pizza_frame.jpg` — a still frame shown for each video before it's played
 - `robots.txt` — tells search crawlers the site is fully indexable and points to the sitemap
 - `sitemap.xml` — the one-page sitemap search engines use to find and re-check the page
 - `README.md` — this file
@@ -13,7 +17,7 @@ A single-page portfolio site for an AI UGC ad / avatar commercial studio, built 
 ## 1. Put it on GitHub Pages
 
 1. Create a new GitHub repository (public), e.g. `debbie-ai-studio`.
-2. Upload `index.html`, `robots.txt`, `sitemap.xml`, `README.md`, **and the whole `media` folder** (keep the folder structure — the page loads videos from `media/...`) to the root of that repository.
+2. Upload **every file above to the root of that repository** — don't put them in a subfolder; `index.html` looks for them right next to itself (e.g. `website.mp4`, not `media/website.mp4`).
 3. In the repo, go to **Settings → Pages**.
 4. Under **Build and deployment**, set **Source** to `Deploy from a branch`, branch `main`, folder `/ (root)`. Save.
 5. GitHub gives you a live URL shortly after, in the form:
@@ -40,7 +44,8 @@ Once your Pages URL is live, do a find-and-replace across these three files, swa
 ## 4. Easy things to customize
 
 - **Contact details** live in the `#contact` section and the floating WhatsApp button near the end of `index.html` — search for `wa.me` and the email address to update either. An Upwork contact card is also included, linking to your profile.
-- **Sample videos**: the hero shows `media/website.mp4` as the featured output next to the product photo, and the `#work` section below plays `media/lip_gloss.mp4`, `media/bag.mp4`, and `media/pizza.mp4`. To swap in a new sample, drop the new `.mp4` (and, optionally, a poster `.jpg` — a still frame shown before play) into `media/`, then update the matching `<source src="...">` and `poster="..."` attributes in `index.html`. The videos were compressed to roughly 720×1280 for fast loading; keep new uploads similarly sized so the page doesn't get heavy.
+- **Sample videos**: the hero shows `website.mp4` as the featured output next to your photo, and the `#work` section below plays `lip_gloss.mp4`, `bag.mp4`, and `pizza.mp4`. To swap in a new sample, upload the new `.mp4` (and, optionally, a matching still-frame `.jpg`) to the repo root, then update the matching `<source src="...">` and `poster="..."` attributes in `index.html`. The videos were compressed to roughly 720×1280 for fast loading; keep new uploads similarly sized so the page doesn't get heavy.
+- **Your photo**: replace `deborah_photo.jpg` with a new file of the same name to update the hero image without touching any code.
 - **Portfolio titles/descriptions** are the text next to each video in the `#work` section — edit freely as projects change.
 - **FAQ answers** are duplicated in two places on purpose: once in the visible `<details>` accordion in `#faq`, and once in the JSON-LD `FAQPage` script in `<head>`. Keep both in sync if you edit them, since the structured data is what AI answer engines actually read.
 - **Rates**: the site intentionally avoids stating a fixed price in the visible text (rates on Upwork can change), pointing people to message for a quote instead. Edit the pricing FAQ answer if you'd like to state a number directly.
