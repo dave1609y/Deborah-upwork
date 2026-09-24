@@ -8,8 +8,8 @@ All files sit flat in one folder — no subfolders needed:
 
 - `index.html` — the entire site (structure, styles, and script in one file)
 - `deborah_photo.jpg` — your photo, shown in the hero
-- `website.mp4`, `lip_gloss.mp4`, `bag.mp4`, `pizza.mp4` — the four sample ads
-- `website_frame.jpg`, `lip_gloss_frame.jpg`, `bag_frame.jpg`, `pizza_frame.jpg` — a still frame shown for each video before it's played
+- `body_oil.mp4`, `elvara.mp4`, `avi.mp4`, `pizza.mp4` — the four sample ads
+- `body_oil_frame.jpg`, `elvara_frame.jpg`, `avi_frame.jpg`, `pizza_frame.jpg` — a still frame shown for each video before it's played
 - `robots.txt` — tells search crawlers the site is fully indexable and points to the sitemap
 - `sitemap.xml` — the one-page sitemap search engines use to find and re-check the page
 - `README.md` — this file
@@ -44,7 +44,7 @@ Once your Pages URL is live, do a find-and-replace across these three files, swa
 ## 4. Easy things to customize
 
 - **Contact details** live in the `#contact` section and the floating WhatsApp button near the end of `index.html` — search for `wa.me` and the email address to update either. An Upwork contact card is also included, linking to your profile.
-- **Sample videos**: the hero shows `website.mp4` as the featured output next to your photo, and the `#work` section below plays `lip_gloss.mp4`, `bag.mp4`, and `pizza.mp4`. To swap in a new sample, upload the new `.mp4` (and, optionally, a matching still-frame `.jpg`) to the repo root, then update the matching `<source src="...">` and `poster="..."` attributes in `index.html`. The videos were compressed to roughly 720×1280 for fast loading; keep new uploads similarly sized so the page doesn't get heavy.
+- **Sample videos**: the hero shows `body_oil.mp4` as the featured output next to your photo, and the `#work` section below plays `elvara.mp4`, `avi.mp4`, and `pizza.mp4`. To swap in a new sample, upload the new `.mp4` (and, optionally, a matching still-frame `.jpg`) to the repo root, then update the matching `<source src="...">` and `poster="..."` attributes in `index.html`. The videos were compressed to roughly 720×1280 for fast loading; keep new uploads similarly sized so the page doesn't get heavy.
 - **Your photo**: replace `deborah_photo.jpg` with a new file of the same name to update the hero image without touching any code.
 - **Portfolio titles/descriptions** are the text next to each video in the `#work` section — edit freely as projects change.
 - **FAQ answers** are duplicated in two places on purpose: once in the visible `<details>` accordion in `#faq`, and once in the JSON-LD `FAQPage` script in `<head>`. Keep both in sync if you edit them, since the structured data is what AI answer engines actually read.
